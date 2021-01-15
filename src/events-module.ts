@@ -33,6 +33,12 @@ namespace events {
         return type.constructor.toString();
     }
 
+    export let stateChange: Bus<StateChangedEvent> = new Bus<StateChangedEvent>("stateChange");
+
+    export interface StateChangedEvent {
+        readonly state: state.State;
+    }
+
     export let scaleChange: Bus<ScaleChangedEvent> = new Bus<ScaleChangedEvent>("scaleChange");
 
     export interface ScaleChangedEvent {
@@ -67,10 +73,7 @@ namespace events {
     export let tuningChange: Bus<TuningChangedEvent> = new Bus<TuningChangedEvent>("tuningChange");
 
     export interface TuningChangedEvent {
-        readonly tuning: string;
-        readonly dots: Array<[number, number]>;
-        readonly description: string;
-        readonly notes: Array<number>;
+        readonly index: number;
     }
 
     export let leftHandedChange: Bus<LeftHandedFretboardEvent> = new Bus<LeftHandedFretboardEvent>("leftHandedChange");

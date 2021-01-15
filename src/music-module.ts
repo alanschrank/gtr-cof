@@ -40,6 +40,7 @@ namespace music {
     ]);
 
     export interface ScaleFamily {
+        readonly index: number;
         readonly name: string;
         readonly intervals: mod.Mod<boolean>;
         readonly modes: Mode[];
@@ -81,11 +82,11 @@ namespace music {
     ];
 
     export let scaleFamily: ScaleFamily[] = [
-        { name: "diatonic",       intervals: new mod.Mod([true, false, true, false, true, true, false, true, false, true, false, true]), modes: diatonicModes, defaultModeIndex: 0 },
-        { name: "harmonic minor", intervals: new mod.Mod([true, false, true, false, true, true, false, false, true, true, false, true]), modes: harmonicMinorModes, defaultModeIndex: 9 },
-        { name: "jazz minor",     intervals: new mod.Mod([true, false, true, true, false, true, false, true, false, true, false, true]), modes: jazzMinorModes, defaultModeIndex: 0 },
-        { name: "whole tone",     intervals: new mod.Mod([true, false, true, false, true, false, true, false, true, false, true, false]), modes: [{ name: 'Whole Tone', index: 0}], defaultModeIndex: 0 },
-        { name: "diminished",     intervals: new mod.Mod([true, false, true, true, false, true, true, false, true, true, false, true]), modes: [{ name: 'Diminished', index: 0}], defaultModeIndex: 0 }
+        { index: 0, name: "diatonic",       intervals: new mod.Mod([true, false, true, false, true, true, false, true, false, true, false, true]), modes: diatonicModes, defaultModeIndex: 0 },
+        { index: 1, name: "harmonic minor", intervals: new mod.Mod([true, false, true, false, true, true, false, false, true, true, false, true]), modes: harmonicMinorModes, defaultModeIndex: 9 },
+        { index: 2, name: "jazz minor",     intervals: new mod.Mod([true, false, true, true, false, true, false, true, false, true, false, true]), modes: jazzMinorModes, defaultModeIndex: 0 },
+        { index: 3, name: "whole tone",     intervals: new mod.Mod([true, false, true, false, true, false, true, false, true, false, true, false]), modes: [{ name: 'Whole Tone', index: 0}], defaultModeIndex: 0 },
+        { index: 4, name: "diminished",     intervals: new mod.Mod([true, false, true, true, false, true, true, false, true, true, false, true]), modes: [{ name: 'Diminished', index: 0}], defaultModeIndex: 0 }
     ];
 
     // root diatonic scale is major
@@ -141,6 +142,41 @@ namespace music {
 
     let naturalList = new mod.Mod(naturals);
 
+    interface NoteName {
+        readonly name: string;
+        readonly index: number;
+    }
+
+    export let noteNames: NoteName[] = [
+        { name: "A", index: 0 },
+        { name: "A♯", index: 1 },
+        { name: "A♭", index: 11 },
+
+        { name: "B", index: 2 },
+        { name: "B♯", index: 3 },
+        { name: "B♭", index: 1 },
+
+        { name: "C", index: 3 },
+        { name: "C♯", index: 4 },
+        { name: "C♭", index: 2 },
+
+        { name: "D", index: 5 },
+        { name: "D♯", index: 6 },
+        { name: "D♭", index: 4 },
+
+        { name: "E", index: 7 },
+        { name: "E♯", index: 8 },
+        { name: "E♭", index: 6 },
+
+        { name: "F", index: 8 },
+        { name: "F♯", index: 9 },
+        { name: "F♭", index: 7 },
+
+        { name: "G", index: 10 },
+        { name: "G♯", index: 11 },
+        { name: "G♭", index: 9 },
+    ];
+
     interface NoteLabel {
         readonly offset: number;
         readonly label: string;
@@ -171,7 +207,7 @@ namespace music {
         };
     }
 
-    export enum ChordType { Major, Minor, Diminished };
+    export enum ChordType { Major, Minor, Diminished, Augmented };
 
     export interface Chord {
         readonly romanNumeral: string;
@@ -364,28 +400,24 @@ namespace music {
                 let roman = romanNumeral[scaleNote.noteNumber];
                 let nodes = generateNodes(scaleNotes, mode, scaleNote.note.index, [], 0, 0, scaleFamily);
                 let diminished = "";
-                let seventh = "";
                 let type: ChordType = ChordType.Minor;
                 // does it have a diminished 5th?
                 if(nodes.some(x => x.scaleNote.isScaleNote && x.chordInterval.ord === 4 && x.chordInterval.type === IntervalType.Dim)) {
                     diminished = "°";
                     type = ChordType.Diminished;
                 }
+                // does it have an augmented 5th?
+                else if(nodes.some(x => x.scaleNote.isScaleNote && x.chordInterval.ord === 4 && x.chordInterval.type === IntervalType.Aug)) {
+                    diminished = "+";
+                    type = ChordType.Augmented;
+                }
                 // does it have a major 3rd?
-                if(nodes.some(x => x.scaleNote.isScaleNote && x.chordInterval.ord === 2 && x.chordInterval.type === IntervalType.Maj)) {
+                else if(nodes.some(x => x.scaleNote.isScaleNote && x.chordInterval.ord === 2 && x.chordInterval.type === IntervalType.Maj)) {
                     roman = roman.toLocaleUpperCase();
                     type = ChordType.Major;
                 }
-                // does it have a natural 7th?
-                if(nodes.some(x => x.scaleNote.isScaleNote && x.chordInterval.ord === 6 && x.chordInterval.type === IntervalType.Min)) {
-                    seventh = "7";
-                }
-                // does it have a major 7th?
-                if(nodes.some(x => x.scaleNote.isScaleNote && x.chordInterval.ord === 6 && x.chordInterval.type === IntervalType.Maj)) {
-                    seventh = "^7";
-                }
                 return {
-                    romanNumeral: roman + diminished + seventh,
+                    romanNumeral: roman + diminished,
                     type: type
                 };
             }

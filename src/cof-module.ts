@@ -16,7 +16,7 @@ namespace cof {
         indexer: (x: Segment) => string = (x) => x.index + "";
 
         constructor(svg: d3.Selection<any>, noteIndexes: number[], label: string) {
-            let state = this.draw(svg, noteIndexes, label);
+            let state = this.draw(svg, rotate(noteIndexes, 3), label);
             let setCToNoonSubscriptionIndex = -1;
 
             events.scaleChange.subscribe(scaleChnaged => { 
@@ -195,6 +195,7 @@ namespace cof {
 
     function getChordSegmentClass(chord: music.Chord): string {
         if (chord.type === music.ChordType.Diminished) return "chord-segment-dim";
+        if (chord.type === music.ChordType.Augmented) return "chord-segment-aug";
         if (chord.type === music.ChordType.Minor) return "chord-segment-minor";
         if (chord.type === music.ChordType.Major) return "chord-segment-major";
         throw "Unexpected ChordType";

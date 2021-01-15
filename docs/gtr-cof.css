@@ -39,7 +39,7 @@ div {
 }
 
 .dropdown:hover {
-    background-color: red;
+    background-color: #444;
 }
 
 .dropdown-content {
@@ -71,7 +71,7 @@ div {
     background-color: #f1f1f1;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-content-visible {
     display: block;
 }
 
@@ -119,6 +119,11 @@ div {
 }
 .chord-segment-dim {
     fill: lightcoral;
+    stroke: black;
+    stroke-width: 2px;
+}
+.chord-segment-aug {
+    fill: lightsalmon;
     stroke: black;
     stroke-width: 2px;
 }

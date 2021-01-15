@@ -8,6 +8,7 @@
         "types": []
     },
     "files": [
+        "src/menu-module.ts",
         "src/mod-module.ts",
         "src/events-module.ts",
         "src/cookie-module.ts",
@@ -22,6 +23,7 @@
         "src/settings-module.ts",
         "src/scale-family-module.ts",
         "src/midi-module.ts",
+        "src/permalink-module.ts",
         "src/gtr-cof.ts"
     ]
 }
