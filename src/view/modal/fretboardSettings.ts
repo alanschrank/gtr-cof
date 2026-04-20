@@ -38,9 +38,7 @@ export function showFretboardSettings(state: State, raise: (msg: Msg) => void) {
     );
 
     // Dark Mode
-    createCheckbox(modal, "Dark Mode", getTheme() === "dark", (isChecked) =>
-        applyTheme(isChecked ? "dark" : "light"),
-    );
+    createCheckbox(modal, "Dark Mode", getTheme() === "dark", (isChecked) => applyTheme(isChecked ? "dark" : "light"));
 
     // Note Labels
     {
