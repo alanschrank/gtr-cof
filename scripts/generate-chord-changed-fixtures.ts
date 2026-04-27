@@ -23,6 +23,7 @@ function makeInputModel(chordIndex: number): Model {
         tuningIndex: 0,
         modalState: "closed",
         sound: true,
+        theme: "light",
     };
 
     const scaleFamily = music.scaleFamily[0];

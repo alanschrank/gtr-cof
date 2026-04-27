@@ -16,4 +16,5 @@ export const defaultState: State = {
     tuningIndex: 0,
     modalState: "closed",
     sound: true,
+    theme: "light",
 };

@@ -20,6 +20,7 @@ const defaultState: State = {
     tuningIndex: 0,
     modalState: "closed",
     sound: false,
+    theme: "light",
 };
 
 const noRaise = (_msg: Msg): void => {};

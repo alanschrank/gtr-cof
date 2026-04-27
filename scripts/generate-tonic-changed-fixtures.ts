@@ -23,6 +23,7 @@ function makeInputModel(): Model {
         tuningIndex: 0,
         modalState: "closed",
         sound: true,
+        theme: "light",
     };
 
     // music field isn't read by the Update function, but we need a valid Model shape.

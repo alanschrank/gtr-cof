@@ -18,6 +18,7 @@ export const service: Service<Model, Msg, Msg> = (model: Model, msg: Msg, raise:
         case "SetCToNoon":
         case "ModalStateChange":
         case "ToggleSound":
+        case "Theme":
             // Do nothing
             break;
         case "Toggle":

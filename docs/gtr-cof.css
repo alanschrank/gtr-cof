@@ -1,5 +1,7 @@
 /* src/styles/variables.css */
 :root {
+  --buncss-light: initial;
+  --buncss-dark: ;
   color-scheme: light;
   --font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   --font-size-base: 12pt;
@@ -12,7 +14,7 @@
   --color-page-bg: #f5f1e8;
   --color-page-text: #1f2937;
   --color-surface: #fffdf8;
-  --color-input-bg: #ffffff;
+  --color-input-bg: #fff;
   --color-input-text: #111827;
   --color-input-border: #cbd5e1;
   --color-link: #1d4ed8;
@@ -66,7 +68,9 @@
   --content-max-width: 1320px;
 }
 
-:root[data-theme=dark] {
+:root[data-theme="dark"] {
+  --buncss-light: ;
+  --buncss-dark: initial;
   color-scheme: dark;
   --color-page-bg: #080808;
   --color-page-text: #e5e5e5;
@@ -75,10 +79,10 @@
   --color-input-text: #e5e5e5;
   --color-input-border: #3a3a3a;
   --color-link: #d0d0d0;
-  --color-link-hover: #ffffff;
+  --color-link-hover: #fff;
   --color-svg-text: #e5e5e5;
   --color-fret-note-text: #111827;
-  --color-header-bg: #000000;
+  --color-header-bg: #000;
   --color-header-hover: #181818;
   --color-header-text: #e5e5e5;
   --color-dropdown-bg: #161616;
@@ -99,10 +103,10 @@
   --color-button-default: #d8d8d8;
   --color-button-disabled: #707070;
   --color-fret-note: #ededed;
-  --color-fret-note-hidden: rgba(255, 255, 255, 0.08);
+  --color-fret-note-hidden: #ffffff14;
   --color-fret-nut: #dfdfdf;
   --color-fret-line: #9a9a9a;
-  --color-fret-dot: #444444;
+  --color-fret-dot: #444;
   --color-fret-string: #d9d9d9;
 }
 
@@ -110,10 +114,10 @@
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  margin: 0;
   background-color: var(--color-page-bg);
   color: var(--color-page-text);
-  transition: background-color 150ms ease, color 150ms ease;
+  margin: 0;
+  transition: background-color .15s, color .15s;
 }
 
 text {
@@ -133,10 +137,7 @@ a:hover {
   color: var(--color-link-hover);
 }
 
-input,
-select,
-textarea,
-button {
+input, select, textarea, button {
   background-color: var(--color-input-bg);
   color: var(--color-input-text);
   border: 1px solid var(--color-input-border);
@@ -158,7 +159,7 @@ fieldset {
   align-items:  center;
   margin: 0;
   padding: 0;
-  transition: background-color 150ms ease;
+  transition: background-color .15s;
 }
 
 .title {
@@ -191,9 +192,9 @@ fieldset {
   color: var(--color-dropdown-text);
   text-align: left;
   z-index: var(--z-dropdown);
+  border: 1px solid var(--color-border);
   min-width: 160px;
   box-shadow: 0 8px 16px #0003;
-  border: 1px solid var(--color-border);
 }
 
 .with-padding {
@@ -581,3 +582,4 @@ fieldset {
 }
 
 /* src/styles/index.css */
+

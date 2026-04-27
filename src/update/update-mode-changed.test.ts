@@ -25,6 +25,7 @@ function makeInputModel(scaleFamilyIndex: number): Model {
         tuningIndex: 0,
         modalState: "closed",
         sound: true,
+        theme: "light",
     };
 
     const noteSpec = music.createNoteSpec(state.naturalIndex, state.index);

@@ -1,0 +1,20 @@
+{
+  "languages": {
+    "TypeScript": {
+      "formatter": {
+        "language_server": {
+          "name": "biome",
+        },
+      },
+      "language_servers": ["biome", "..."],
+    },
+    "JavaScript": {
+      "formatter": {
+        "language_server": {
+          "name": "biome",
+        },
+      },
+      "language_servers": ["biome", "..."],
+    },
+  },
+}

@@ -458,6 +458,7 @@
     "circleIsCNoon": true,
     "tuningIndex": 0,
     "modalState": "closed",
-    "sound": true
+    "sound": true,
+    "theme": "light"
   }
 }

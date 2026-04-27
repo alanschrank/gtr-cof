@@ -10,6 +10,7 @@ import { Update as UpdateModalState } from "./update-modal-state";
 import { Update as UpdateModeChanged } from "./update-mode-changed";
 import { Update as UpdateScaleFamilyChange } from "./update-scale-family-change";
 import { Update as UpdateSetCToNoon } from "./update-set-c-to-noon";
+import { Update as UpdateTheme } from "./update-theme";
 import { Update as UpdateToggle } from "./update-toggle";
 import { Update as UpdateToggleSound } from "./update-toggle-sound";
 import { Update as UpdateTonicChanged } from "./update-tonic-changed";
@@ -48,6 +49,8 @@ export const update: UpdateModel<Model, Msg> = (model: Model, msg: Msg): Model =
             return model;
         case "ToggleSound":
             return UpdateToggleSound(model, msg);
+        case "Theme":
+            return UpdateTheme(model, msg);
         default: {
             const _exhaustiveCheck: never = msg;
             return _exhaustiveCheck;
