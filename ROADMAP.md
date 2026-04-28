@@ -6,7 +6,7 @@
 1. MIDI / Audio. (DONE)
 1. Redesign. See [Issue #38](https://github.com/mikehadlow/gtr-cof/issues/38) (DONE)
 1. Add octave names (needed for Staff display) See [Issue #48](https://github.com/mikehadlow/gtr-cof/issues/48) (DONE - used MIDI notes)
-1. Move scale family dropdown onto control panel.
+1. Move scale family dropdown onto control panel. (DONE)
 
 1. Subscales. Particularly to enable pentatonic scales to be rendered
 1. Rotation. Take a single chord (or set of notes) and display all possible modes/keys

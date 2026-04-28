@@ -7,6 +7,10 @@ body {
     transition:
         background-color 150ms ease,
         color 150ms ease;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
 }
 
 text {
