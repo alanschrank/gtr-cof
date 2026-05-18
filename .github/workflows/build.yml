@@ -5,12 +5,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-      - run: rm -f package-lock.json
-      - run: npm install
-      - run: tsc --build tsconfig.json
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install
+      - run: bun run check
+      - run: bun run check-deps
+      - run: bun run build
+      - run: bun test
       - run: mkdir docs/src
       - run: cp src/*.ts docs/src
+      - run: sed -i "s/gtr-cof\.css/gtr-cof.css?v=$GITHUB_SHA/" docs/index.html
+      - run: sed -i "s/gtr-cof\.js/gtr-cof.js?v=$GITHUB_SHA/" docs/index.html
       - run: echo "Run number=$GITHUB_RUN_NUMBER, Actor=$GITHUB_ACTOR, Sha=$GITHUB_SHA" > docs/version.txt
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4

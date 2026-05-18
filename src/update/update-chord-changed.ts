@@ -1,0 +1,17 @@
+import type { Msg } from "../message";
+import type { Model } from "../model";
+import type { Update as UpdateModel } from "../types";
+import { updateScale } from "./updateScale";
+
+export const Update: UpdateModel<Model, Extract<Msg, { id: "ChordChanged" }>> = (model, msg) => {
+    const current = model.state;
+    // if the user is clicking on the same chord, then toggle it off.
+    if (msg.chordIndex === current.chordIndex) {
+        current.chordIndex = -1;
+    } else {
+        current.chordIndex = msg.chordIndex;
+    }
+    // un-toggle any previously selected notes
+    current.toggledNotesBitmask = 0;
+    return updateScale(current);
+};

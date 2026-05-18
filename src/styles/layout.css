@@ -1,0 +1,9 @@
+.content {
+    padding: 10px;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
