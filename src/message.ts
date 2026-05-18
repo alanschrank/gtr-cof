@@ -1,0 +1,71 @@
+import type * as music from "./music";
+import type { FretboardLabelType, ModalState, Theme } from "./types";
+
+export type SequenceEvent = {
+    timestamp: number; // milliseconds
+    midiNotes: number[];
+};
+
+export type Msg =
+    | {
+          id: "TonicChanged";
+          noteSpec: music.NoteSpec;
+      }
+    | {
+          id: "ModeChanged";
+          mode: music.Mode;
+      }
+    | {
+          id: "ChordChanged";
+          chordIndex: number;
+      }
+    | {
+          id: "Toggle";
+          index: number;
+          midiNote?: number;
+      }
+    | {
+          id: "ChordIntervalChange";
+          chordIntervals: number[];
+      }
+    | {
+          id: "ScaleFamilyChange";
+          scaleFamily: music.ScaleFamily;
+      }
+    | {
+          // Fretboard only messages
+          id: "TuningChanged";
+          index: number;
+      }
+    | {
+          id: "LeftHandedFretboard";
+          isLeftHanded: boolean;
+      }
+    | {
+          id: "FlipNut";
+          isNutFlipped: boolean;
+      }
+    | {
+          id: "FretboardLabelChange";
+          labelType: FretboardLabelType;
+      }
+    | {
+          // CoF only message
+          id: "SetCToNoon";
+          isC: boolean;
+      }
+    | {
+          id: "ModalStateChange";
+          modalState: ModalState;
+      }
+    | {
+          id: "Play";
+          sequence: SequenceEvent[];
+      }
+    | {
+          id: "ToggleSound";
+      }
+    | {
+          id: "Theme";
+          theme: Theme;
+      };

@@ -1,194 +1,593 @@
+/* src/styles/variables.css */
+:root {
+  --buncss-light: initial;
+  --buncss-dark: ;
+  color-scheme: light;
+  --font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  --font-size-base: 12pt;
+  --font-size-title: 14pt;
+  --font-size-note: 35px;
+  --font-size-degree: 20px;
+  --font-size-button: 15px;
+  --font-size-modal-close: 20pt;
+  --font-size-modal-select: 11pt;
+  --color-page-bg: #f5f1e8;
+  --color-page-text: #1f2937;
+  --color-surface: #fffdf8;
+  --color-input-bg: #fff;
+  --color-input-text: #111827;
+  --color-input-border: #cbd5e1;
+  --color-link: #1d4ed8;
+  --color-link-hover: #1e3a8a;
+  --color-svg-text: #1f2937;
+  --color-fret-note-text: #111827;
+  --color-header-bg: #333;
+  --color-header-hover: #444;
+  --color-header-text: white;
+  --color-dropdown-bg: #f9f9f9;
+  --color-dropdown-hover: #f1f1f1;
+  --color-dropdown-text: black;
+  --color-border: #ddd;
+  --color-muted: #666;
+  --color-segment-default: #bec4d0;
+  --color-segment-tonic: #ffe000;
+  --color-segment-scale: #fefaf4;
+  --color-segment-dim: #e06868;
+  --color-segment-aug: #eca040;
+  --color-segment-minor: #5aaee0;
+  --color-segment-major: #5ec45e;
+  --color-segment-interval: #fefaf4;
+  --color-segment-stroke: #1a1a2e;
+  --color-button-selected: #ffe000;
+  --color-button-default: white;
+  --color-button-disabled: #a8a8a8;
+  --interval-color-0: #f44b42;
+  --interval-color-1: #f48942;
+  --interval-color-2: #f4bf42;
+  --interval-color-3: #f4ee42;
+  --interval-color-4: #8cf442;
+  --interval-color-5: #42f4bf;
+  --interval-color-6: #42d4f4;
+  --interval-color-7: #429ef4;
+  --interval-color-8: #e542f4;
+  --interval-color-9: #f44289;
+  --interval-color-10: #ff8282;
+  --interval-color-11: #ff82fc;
+  --color-fret-note: white;
+  --color-fret-note-hidden: #ffffff03;
+  --color-fret-nut: black;
+  --color-fret-line: grey;
+  --color-fret-dot: lightgrey;
+  --color-fret-string: black;
+  --stroke-width-fret: 1px;
+  --stroke-width: 2px;
+  --stroke-width-toggle: 4px;
+  --z-dropdown: 1;
+  --z-modal-backdrop: 1000;
+  --z-modal: 1001;
+  --content-max-width: 1320px;
+}
+
+:root[data-theme="dark"] {
+  --buncss-light: ;
+  --buncss-dark: initial;
+  color-scheme: dark;
+  --color-page-bg: #080808;
+  --color-page-text: #e5e5e5;
+  --color-surface: #161616;
+  --color-input-bg: #101010;
+  --color-input-text: #e5e5e5;
+  --color-input-border: #3a3a3a;
+  --color-link: #d0d0d0;
+  --color-link-hover: #fff;
+  --color-svg-text: #e5e5e5;
+  --color-fret-note-text: #111827;
+  --color-header-bg: #000;
+  --color-header-hover: #181818;
+  --color-header-text: #e5e5e5;
+  --color-dropdown-bg: #161616;
+  --color-dropdown-hover: #202020;
+  --color-dropdown-text: #e5e5e5;
+  --color-border: #343434;
+  --color-muted: #9a9a9a;
+  --color-segment-default: #b8b8b8;
+  --color-segment-tonic: #e7c84b;
+  --color-segment-scale: #ececec;
+  --color-segment-dim: #d86d76;
+  --color-segment-aug: #d49a4e;
+  --color-segment-minor: #7da9c7;
+  --color-segment-major: #78b878;
+  --color-segment-interval: #dedede;
+  --color-segment-stroke: #353535;
+  --color-button-selected: #e7c84b;
+  --color-button-default: #d8d8d8;
+  --color-button-disabled: #707070;
+  --color-fret-note: #ededed;
+  --color-fret-note-hidden: #ffffff14;
+  --color-fret-nut: #dfdfdf;
+  --color-fret-line: #9a9a9a;
+  --color-fret-dot: #444;
+  --color-fret-string: #d9d9d9;
+}
+
+/* src/styles/base.css */
 body {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 12pt;
-    margin: 0px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  background-color: var(--color-page-bg);
+  color: var(--color-page-text);
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  transition: background-color .15s, color .15s;
 }
 
 text {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 div {
-    margin: 0px;
-    padding: 0px;
+  margin: 0;
+  padding: 0;
 }
 
+a {
+  color: var(--color-link);
+}
+
+a:hover {
+  color: var(--color-link-hover);
+}
+
+input, select, textarea, button {
+  background-color: var(--color-input-bg);
+  color: var(--color-input-text);
+  border: 1px solid var(--color-input-border);
+}
+
+fieldset {
+  border: 1px solid var(--color-border);
+}
+
+.svg-text {
+  fill: var(--color-svg-text);
+}
+
+/* src/styles/header.css */
 .header {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-}
-
-footer {
-    margin: 0;
-    padding: 0px 16px;
-    overflow: hidden;
-    color: white;
-    background-color: #333;
+  overflow: hidden;
+  background-color: var(--color-header-bg);
+  display: flex;
+  align-items:  center;
+  margin: 0;
+  padding: 0;
+  transition: background-color .15s;
 }
 
 .title {
-    font-weight: bold;
-    font-size: 14pt;
-    margin: 0pt;
+  font-weight: bold;
+  font-size: var(--font-size-title);
+  margin: 0;
 }
 
 .menu {
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    cursor: default;
+  display: inline-block;
+  color: var(--color-header-text);
+  text-align: center;
+  text-decoration: none;
+  cursor: default;
+  padding: 14px 16px;
 }
 
 .dropdown {
-    display: inline-block;
+  display: inline-block;
 }
 
 .dropdown:hover {
-    background-color: #444;
+  background-color: var(--color-header-hover);
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    color: black;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    text-align: left;
-    z-index: 1;
+  display: none;
+  position: absolute;
+  background-color: var(--color-dropdown-bg);
+  color: var(--color-dropdown-text);
+  text-align: left;
+  z-index: var(--z-dropdown);
+  border: 1px solid var(--color-border);
+  min-width: 160px;
+  box-shadow: 0 8px 16px #0003;
 }
 
 .with-padding {
-    padding: 12px 16px;
+  padding: 12px 16px;
 }
 
-/* Links inside the dropdown */
 .dropdown-content-item {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    cursor: default;
+  color: var(--color-dropdown-text);
+  text-decoration: none;
+  display: block;
+  cursor: default;
+  padding: 12px 16px;
 }
 
-/* Change color of dropdown links on hover */
 .dropdown-content-item:hover {
-    background-color: #f1f1f1;
+  background-color: var(--color-dropdown-hover);
 }
 
 .dropdown-content-visible {
-    display: block;
+  display: block;
 }
 
+.menu-bar-icon {
+  fill: var(--color-header-text);
+}
+
+.scale-family-select {
+  font-family: var(--font-family);
+  font-size: var(--font-size-button);
+  width: 100%;
+}
+
+/* src/styles/layout.css */
 .content {
-    padding: 10px 10px 10px 10px;
+  max-width: var(--content-max-width);
+  box-sizing: border-box;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-/* Circle of Fifths */
+/* src/styles/circle.css */
 .note-segment {
-    fill: lightgrey;
-    stroke: none;
-}
-.note-segment-tonic {
-    fill: yellow;
-    stroke: black;
-    stroke-width: 3px;
-}
-.note-segment-scale {
-    fill: white;
-    stroke: black;
-    stroke-width: 3px;
-}
-.note-segment-text {
-    font-size: 35px;
-    text-anchor: middle;
-    fill: black;
-}
-.degree-segment {
-    fill: none;
-    stroke: none;
-}
-.degree-segment-selected {
-    fill: white;
-    stroke: black;
-    stroke-width: 2px;
-}
-.degree-segment-text {
-    font-size: 20px;
-    text-anchor: middle;
-    fill: black;
-}
-.chord-segment {
-    fill: none;
-    stroke: none;
-}
-.chord-segment-dim {
-    fill: lightcoral;
-    stroke: black;
-    stroke-width: 2px;
-}
-.chord-segment-aug {
-    fill: lightsalmon;
-    stroke: black;
-    stroke-width: 2px;
-}
-.chord-segment-minor {
-    fill: lightblue;
-    stroke: black;
-    stroke-width: 2px;
-}
-.chord-segment-major {
-    fill: lightgreen;
-    stroke: black;
-    stroke-width: 2px;
-}
-.chord-segment-note {
-    fill: none;
-    stroke: none;
-}
-.interval-note-selected {
-    stroke: black;
-    stroke-width: 2px;
-}
-.interval-segment {
-    fill: white;
-    stroke: none;
-}
-.interval-note {
-    fill: none;
-    stroke: none;
-}
-/* Modes */
-.mode-button {
-    fill: white;
-    stroke: black;
-}
-.mode-button-selected {
-    fill: yellow;
-}
-.mode-text {
-    font-size: 15;
-    text-anchor: left;
-    fill: black;
+  fill: var(--color-segment-default);
+  stroke: none;
 }
 
-/* Tonics */
+.note-segment-tonic {
+  fill: var(--color-segment-tonic);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.note-segment-scale {
+  fill: var(--color-segment-scale);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.note-segment-text {
+  font-size: var(--font-size-note);
+  text-anchor: middle;
+  fill: var(--color-segment-stroke);
+}
+
+.degree-segment {
+  fill: none;
+  stroke: none;
+}
+
+.degree-segment-selected {
+  fill: var(--color-segment-scale);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.degree-segment-text {
+  font-size: var(--font-size-degree);
+  text-anchor: middle;
+  fill: var(--color-segment-stroke);
+}
+
+.chord-segment {
+  fill: none;
+  stroke: none;
+}
+
+.chord-segment-dim {
+  fill: var(--color-segment-dim);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.chord-segment-aug {
+  fill: var(--color-segment-aug);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.chord-segment-minor {
+  fill: var(--color-segment-minor);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.chord-segment-major {
+  fill: var(--color-segment-major);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.chord-segment-note {
+  fill: none;
+  stroke: none;
+}
+
+.interval-note-selected {
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.interval-segment {
+  fill: var(--color-segment-interval);
+  stroke: none;
+}
+
+.interval-note {
+  fill: none;
+  stroke: none;
+}
+
+.interval-fill-0 {
+  fill: var(--interval-color-0);
+}
+
+.interval-fill-1 {
+  fill: var(--interval-color-1);
+}
+
+.interval-fill-2 {
+  fill: var(--interval-color-2);
+}
+
+.interval-fill-3 {
+  fill: var(--interval-color-3);
+}
+
+.interval-fill-4 {
+  fill: var(--interval-color-4);
+}
+
+.interval-fill-5 {
+  fill: var(--interval-color-5);
+}
+
+.interval-fill-6 {
+  fill: var(--interval-color-6);
+}
+
+.interval-fill-7 {
+  fill: var(--interval-color-7);
+}
+
+.interval-fill-8 {
+  fill: var(--interval-color-8);
+}
+
+.interval-fill-9 {
+  fill: var(--interval-color-9);
+}
+
+.interval-fill-10 {
+  fill: var(--interval-color-10);
+}
+
+.interval-fill-11 {
+  fill: var(--interval-color-11);
+}
+
+/* src/styles/buttons.css */
+.mode-button {
+  fill: var(--color-button-default);
+  stroke: var(--color-segment-stroke);
+}
+
+.mode-button-selected {
+  fill: var(--color-button-selected);
+}
+
+.mode-text {
+  font-size: var(--font-size-button);
+  text-anchor: left;
+  fill: var(--color-svg-text);
+}
+
 .tonic-button {
-    fill: white;
-    stroke: black;
+  fill: var(--color-button-default);
+  stroke: var(--color-segment-stroke);
 }
+
 .tonic-button-grey {
-    fill: grey;
+  fill: var(--color-button-disabled);
 }
+
 .tonic-button-selected {
-    fill: yellow;
+  fill: var(--color-button-selected);
 }
+
 .tonic-text {
-    font-size: 15;
-    text-anchor: left;
-    fill: black;
+  font-size: var(--font-size-button);
+  text-anchor: left;
+  fill: var(--color-segment-stroke);
 }
+
+/* src/styles/modal.css */
+.modal-backdrop {
+  position: fixed;
+  z-index: var(--z-modal-backdrop);
+  display: flex;
+  background: #0006;
+  justify-content: center;
+  align-items:  center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal-container {
+  background: var(--color-surface);
+  z-index: var(--z-modal);
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 24px #0000004d;
+}
+
+.modal-header {
+  display: flex;
+  border-bottom: 1px solid var(--color-border);
+  font-weight: bold;
+  font-size: var(--font-size-title);
+  justify-content: space-between;
+  align-items:  center;
+  padding: 12px 16px;
+}
+
+.modal-close {
+  font-size: var(--font-size-modal-close);
+  cursor: pointer;
+  color: var(--color-muted);
+  background: none;
+  border: none;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--color-segment-stroke);
+}
+
+.modal-section {
+  padding: 10px 16px;
+}
+
+.modal-section-title {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.modal-select {
+  font-size: var(--font-size-modal-select);
+  width: 100%;
+  padding: 4px;
+}
+
+.modal-checkbox-label, .modal-radio-label {
+  display: block;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.modal-radio-label {
+  margin-left: 4px;
+}
+
+/* src/styles/guitar.css */
+.fret-note {
+  fill: var(--color-fret-note-hidden);
+  stroke: none;
+  stroke-width: 0;
+}
+
+.fret-note-scale {
+  fill: var(--color-fret-note);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.fret-note-tonic {
+  fill: var(--color-segment-tonic);
+  stroke: var(--color-segment-stroke);
+  stroke-width: var(--stroke-width);
+}
+
+.fret-note-dimmed {
+  fill: var(--color-fret-note);
+  stroke: none;
+}
+
+.fret-note-toggle {
+  fill: var(--color-fret-note);
+  stroke-width: var(--stroke-width-toggle);
+}
+
+.fret-note-text {
+  fill: var(--color-fret-note-text);
+}
+
+.interval-stroke-0 {
+  stroke: var(--interval-color-0);
+}
+
+.interval-stroke-1 {
+  stroke: var(--interval-color-1);
+}
+
+.interval-stroke-2 {
+  stroke: var(--interval-color-2);
+}
+
+.interval-stroke-3 {
+  stroke: var(--interval-color-3);
+}
+
+.interval-stroke-4 {
+  stroke: var(--interval-color-4);
+}
+
+.interval-stroke-5 {
+  stroke: var(--interval-color-5);
+}
+
+.interval-stroke-6 {
+  stroke: var(--interval-color-6);
+}
+
+.interval-stroke-7 {
+  stroke: var(--interval-color-7);
+}
+
+.interval-stroke-8 {
+  stroke: var(--interval-color-8);
+}
+
+.interval-stroke-9 {
+  stroke: var(--interval-color-9);
+}
+
+.interval-stroke-10 {
+  stroke: var(--interval-color-10);
+}
+
+.interval-stroke-11 {
+  stroke: var(--interval-color-11);
+}
+
+.fret-nut {
+  fill: var(--color-fret-nut);
+  stroke: var(--color-fret-line);
+  stroke-width: var(--stroke-width-fret);
+}
+
+.fret-line {
+  fill: none;
+  stroke: var(--color-fret-line);
+  stroke-width: var(--stroke-width-fret);
+}
+
+.fret-dot {
+  fill: var(--color-fret-dot);
+}
+
+.fret-string {
+  stroke: var(--color-fret-string);
+  stroke-width: var(--stroke-width);
+}
+
+/* src/styles/index.css */
+
